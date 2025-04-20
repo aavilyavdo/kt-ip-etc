@@ -2,7 +2,7 @@
 Here are the key best practices for developing IPTV software:
 
 Stream Management
-class StreamManager {
+<?class StreamManager {
     private $streams = [];
     
     public function addStream($streamUrl, $quality) {
@@ -27,6 +27,7 @@ Authentication system
 Content delivery network (CDN) integration
 Adaptive bitrate streaming
 Performance optimization:
+<?
 class StreamOptimizer {
     public function optimizeBuffer($bufferSize) {
         return max(min($bufferSize, 8192), 1024);
@@ -36,20 +37,14 @@ class StreamOptimizer {
         $qualities = ['1080p', '720p', '480p', '360p'];
         return $this->selectOptimalQuality($bandwidth, $qualities);
     }
-}
 
-Copy
-
-Reapply
-
-c:\Users\avily\IPTV.php
-Security measures:
-Token-based authentication
-DRM implementation
-Encryption for sensitive content
-Geolocation restrictions
+// Security measures:
+// Token-based authentication
+// DRM implementation
+// Encryption for sensitive content
+// Geolocation restrictions
 Monitoring tools:
-class StreamMonitor {
+<?class StreamMonitor {
     public function checkStreamHealth($streamUrl) {
         return [
             'latency' => $this->measureLatency($streamUrl),
@@ -58,10 +53,7 @@ class StreamMonitor {
         ];
     }
 }
-
-Accept
-
-Reject
+?>
 c:\Users\avily\IPTV.php
 Standards compliance:
 HLS (HTTP Live Streaming)
@@ -79,7 +71,7 @@ Context
 — none fetched
 Here's a comprehensive solution to unite the functions and create an administrative interface:
 
-class IPTVAdminPanel {
+<?class IPTVAdminPanel {
     private $streamManager;
     private $streamOptimizer;
     private $streamMonitor;
@@ -115,7 +107,7 @@ Apply
 c:\Users\avily\IPTV.php
 For the frontend interface, create a modern dashboard:
 
-class AdminDashboard {
+<?class AdminDashboard {
     constructor() {
         this.initializeCharts();
         this.setupEventListeners();
@@ -127,15 +119,9 @@ class AdminDashboard {
         this.viewershipChart = new Chart('viewer-metrics');
     }
 }
+?>
 
-Copy
-
-Apply
-
-c:\Users\avily\assets\js\admin-dashboard.js
-Add a REST API for administrative operations:
-
-class AdminController {
+<script>class AdminController {
     public function streams() {
         return [
             'GET' => $this->listStreams(),
@@ -153,15 +139,14 @@ class AdminController {
         ];
     }
 }
+</script>
 
-Copy
-
-Apply
 
 c:\Users\avily\api\AdminController.php
 To implement this solution:
 
 Set up the database schema:
+<sql>
 CREATE TABLE streams (
     id INT PRIMARY KEY AUTO_INCREMENT,
     name VARCHAR(255),
@@ -170,32 +155,19 @@ CREATE TABLE streams (
     quality VARCHAR(20),
     created_at TIMESTAMP
 );
-
-Copy
-
-Apply
-
-c:\Users\avily\database\schema.sql
+</sql>
 Create the deployment structure:
+
 mkdir -p admin/{templates,assets,controllers}
 
-Copy
 
-Execute
-
-Install required dependencies:
 composer require monolog/monolog
 
-Copy
-
-Execute
 
 Set up monitoring:
 composer require prometheus/client_php
 
-Copy
 
-Execute
 
 This solution provides:
 
@@ -276,11 +248,9 @@ class StreamService {
     }
 }
 
-Copy
 
-Apply
 
-c:\Users\avily\backend\src\StreamService.php
+
 Database Interface:
 
 class StreamRepository {
@@ -299,11 +269,7 @@ class StreamRepository {
     }
 }
 
-Copy
 
-Apply
-
-c:\Users\avily\backend\src\Repository\StreamRepository.php
 API Layer:
 
 class StreamController {
@@ -321,11 +287,7 @@ class StreamController {
     }
 }
 
-Copy
 
-Apply
-
-c:\Users\avily\backend\src\Controller\StreamController.php
 Database Schema:
 
 CREATE TABLE streams (
@@ -346,11 +308,7 @@ CREATE TABLE stream_analytics (
     PRIMARY KEY (stream_id, timestamp)
 );
 
-Copy
 
-Apply
-
-c:\Users\avily\database\migrations\streams.sql
 Configuration:
 
 services:
@@ -366,13 +324,10 @@ services:
         class: App\Controller\StreamController
         arguments: ['@stream.service']
 
-Copy
-
-Apply
 
 c:\Users\avily\config\services.yaml
-This architecture provides:
 
+This architecture provides:
 Clear separation of concerns
 Scalable component structure
 Easy maintenance and testing
@@ -385,7 +340,7 @@ reorganize it with mvc pattern.
 
 
 
-
+v2.0
 Context
 — none fetched
 Here's the IPTV system reorganized with MVC pattern:
@@ -409,10 +364,6 @@ class Stream extends Model
     }
 }
 
-Copy
-
-Apply
-
 c:\Users\avily\app\Models\Stream.php
 View:
 
@@ -432,11 +383,6 @@ View:
 </div>
 @endsection
 
-Copy
-
-Apply
-
-c:\Users\avily\app\Views\admin\dashboard.blade.php
 Controller:
 
 class StreamController extends Controller
@@ -463,11 +409,9 @@ class StreamController extends Controller
     }
 }
 
-Copy
 
-Apply
 
-c:\Users\avily\app\Controllers\StreamController.php
+StreamController.php
 Service Layer:
 
 class StreamService
@@ -494,11 +438,6 @@ class StreamService
     }
 }
 
-Copy
-
-Apply
-
-c:\Users\avily\app\Services\StreamService.php
 Routes:
 
 Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function () {
@@ -507,11 +446,7 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function () {
     Route::post('streams/{stream}/optimize', [StreamController::class, 'optimize']);
 });
 
-Copy
-
-Apply
-
-c:\Users\avily\routes\web.php
+C:\Users\avily\routes\web.php
 This MVC structure provides:
 
 Clear separation of business logic (Models)
@@ -527,8 +462,6 @@ pack the whole thing for composer dependencies manager.
 
 
 
-Context
-— none fetched
 Let's pack the IPTV system for Composer. Here's the complete structure:
 
 {
@@ -564,18 +497,13 @@ Let's pack the IPTV system for Composer. Here's the complete structure:
     }
 }
 
-Copy
 
-Apply
-
-c:\Users\avily\composer.json
+composer.json
 Project structure:
 
 mkdir -p src/{Models,Controllers,Views,Services,Database}
 
-Copy
 
-Execute
 
 Create the package installer:
 
@@ -599,9 +527,6 @@ class IPTVServiceProvider extends ServiceProvider
     }
 }
 
-Copy
-
-Apply
 
 c:\Users\avily\src\IPTVServiceProvider.php
 Add configuration file:
@@ -618,9 +543,6 @@ return [
     ]
 ];
 
-Copy
-
-Apply
 
 c:\Users\avily\config\iptv.php
 Create installation command:
@@ -642,11 +564,8 @@ class InstallCommand extends Command
     }
 }
 
-Copy
 
-Apply
-
-c:\Users\avily\src\Console\InstallCommand.php
+Console\InstallCommand.php
 Usage instructions in README:
 
 # IPTV Management System
@@ -656,17 +575,11 @@ Usage instructions in README:
 ```bash
 composer require iptv/admin-panel
 
-Copy
-
-Apply
-
-c:\Users\avily\README.md
+\README.md
 Configuration
 php artisan iptv:install
 
-Copy
 
-Execute
 
 Features
 Stream Management
@@ -685,17 +598,13 @@ The package is now ready for distribution through Composer with:
 
 Users can install and integrate the IPTV system into their existing Laravel applications with minimal setup required.
 
-Copy
-
-Apply
 
 add readme.md and Dockerfile to the application.
 
 
 
 
-Context
-— none fetched
+
 Here's a comprehensive README.md and Dockerfile for the IPTV application:
 
 # IPTV Management System
@@ -721,40 +630,26 @@ Professional IPTV streaming and management solution with advanced monitoring cap
 ```bash
 git clone https://github.com/your-org/iptv-system.git
 
-Copy
 
-Apply
-
-c:\Users\avily\README.md
 Install dependencies
 composer install
 npm install
 
-Copy
 
-Execute
 
 Configure environment
 cp .env.example .env
 php artisan key:generate
 
-Copy
 
-Execute
 
 Run migrations
 php artisan migrate
 
-Copy
-
-Execute
 
 Start development server
 php artisan serve
 
-Copy
-
-Execute
 
 Docker Deployment
 Use the included Dockerfile to build and run the application:
@@ -762,9 +657,7 @@ Use the included Dockerfile to build and run the application:
 docker build -t iptv-system .
 docker run -p 8080:80 iptv-system
 
-Copy
 
-Execute
 
 API Documentation
 API endpoints are available at /api/documentation
@@ -777,7 +670,6 @@ License
 MIT License
 
 
-```dockerfile:c:\Users\avily\Dockerfile
 # Base image
 FROM php:8.1-fpm
 
@@ -825,9 +717,7 @@ EXPOSE 9000
 # Start PHP-FPM
 CMD ["php-fpm"]
 
-Copy
 
-Apply
 
 The Dockerfile includes:
 
@@ -845,9 +735,7 @@ how to rearrange the structures for the latest php version aboard?
 
 
 
-Context
-— none fetched
-Let's upgrade the structure for PHP 8.2+ with modern features:
+et's upgrade the structure for PHP 8.2+ with modern features:
 
 readonly class Stream
 {
@@ -901,9 +789,6 @@ final class StreamService
     }
 }
 
-Copy
-
-Apply
 
 c:\Users\avily\src\Services\StreamService.php
 Updated composer configuration:
@@ -922,12 +807,9 @@ Updated composer configuration:
     }
 }
 
-Copy
 
-Apply
 
-c:\Users\avily\composer.json
-Modern attribute-based routing:
+
 
 class StreamController
 {
@@ -938,9 +820,7 @@ class StreamController
     }
 }
 
-Copy
 
-Apply
 
 c:\Users\avily\src\Controllers\StreamController.php
 This modernized structure leverages:
@@ -978,10 +858,6 @@ Here's a robust solution for auto-switching PHP versions:
     }
 }
 
-Copy
-
-Apply
-
 c:\Users\avily\composer.json
 Create version detector:
 
@@ -1004,9 +880,7 @@ class VersionManager
     }
 }
 
-Copy
 
-Apply
 
 c:\Users\avily\src\Config\VersionManager.php
 Feature sets implementation:
@@ -1017,9 +891,7 @@ trait StreamFeatures
     public function process() {...}
 }
 
-Copy
 
-Apply
 
 c:\Users\avily\src\Config\features\modern.php
 trait StreamFeatures 
@@ -1083,9 +955,7 @@ Run with specific PHP version:
 
 PHP_VERSION=74 docker-compose up
 
-Copy
 
-Execute
 
 The system automatically adapts to the available PHP version while maintaining functionality across different environments.
 
@@ -1094,8 +964,7 @@ what will the system look like  taking into account the option of multiple users
 
 
 
-Context
-— none fetched
+
 The system will handle multiple users efficiently through these components:
 
 class ConnectionManager
@@ -1122,9 +991,7 @@ class ConnectionManager
     }
 }
 
-Copy
 
-Apply
 
 c:\Users\avily\src\Services\ConnectionManager.php
 Load balancer implementation:
@@ -1147,9 +1014,6 @@ class LoadBalancer
     }
 }
 
-Copy
-
-Apply
 
 c:\Users\avily\src\Services\LoadBalancer.php
 User session management:
@@ -1166,11 +1030,7 @@ class SessionManager
     }
 }
 
-Copy
-
-Apply
-
-c:\Users\avily\src\Services\SessionManager.php
+\src\Services\SessionManager.php
 This architecture provides:
 
 Real-time user tracking
@@ -1184,11 +1044,6 @@ The system will maintain high performance even with thousands of concurrent user
 
 let's take a moment and review all the components in terms of mvc pattern.
 
-
-
-
-Context
-— none fetched
 Let's organize all components following MVC pattern clearly:
 
 Models (Data Layer):
@@ -1213,9 +1068,6 @@ class Viewer extends Model
     }
 }
 
-Copy
-
-Apply
 
 c:\Users\avily\src\Models\Stream.php
 Views (Presentation Layer):
@@ -1234,9 +1086,6 @@ Views (Presentation Layer):
     </div>
 </div>
 
-Copy
-
-Apply
 
 c:\Users\avily\src\Views\dashboard\index.blade.php
 Controllers (Logic Layer):
@@ -1255,9 +1104,6 @@ class StreamController extends BaseController
     }
 }
 
-Copy
-
-Apply
 
 c:\Users\avily\src\Controllers\StreamController.php
 Services (Business Logic):
@@ -1278,9 +1124,6 @@ class StreamService
     }
 }
 
-Copy
-
-Apply
 
 c:\Users\avily\src\Services\StreamService.php
 Routes:
@@ -1291,9 +1134,7 @@ Route::group(['middleware' => ['auth', 'admin']], function() {
     Route::post('optimize/{stream}', [StreamController::class, 'optimize']);
 });
 
-Copy
 
-Apply
 
 c:\Users\avily\routes\web.php
 This structure provides:
@@ -1323,9 +1164,6 @@ Service Providers
 The composer.json dependencies include:
 "laravel/framework": "^10.0"
 
-Copy
-
-Apply
 
 The project structure follows Laravel conventions with:
 Controllers extending BaseController
@@ -1339,8 +1177,6 @@ what is the set of initial db settings by default?
 
 
 
-Context
-— none fetched
 Here are the default database settings for the IPTV system:
 
 return [
@@ -1371,11 +1207,7 @@ return [
     ]
 ];
 
-Copy
-
-Apply
-
-c:\Users\avily\config\database.php
+avily\config\database.php
 The initial database migrations create these core tables:
 
 CREATE TABLE streams (
@@ -1405,9 +1237,6 @@ CREATE TABLE analytics (
     FOREIGN KEY (stream_id) REFERENCES streams(id)
 );
 
-Copy
-
-Apply
 
 c:\Users\avily\database\migrations\create_base_tables.sql
 These settings provide:
@@ -1423,8 +1252,6 @@ can I use the built in mic and webcam as default sources of data streams?
 
 
 
-Context
-— none fetched
 Yes! You can use built-in mic and webcam as default stream sources. Here's how to implement it:
 
 class StreamSourceService
@@ -1447,9 +1274,6 @@ class StreamSourceService
     }
 }
 
-Copy
-
-Apply
 
 c:\Users\avily\src\Services\StreamSourceService.php
 This implementation:
@@ -1467,8 +1291,6 @@ integrate the last two codeframes where they are needed?
 
 
 
-Context
-— none fetched
 Let's integrate the StreamSourceService into our existing MVC structure:
 
 class StreamController extends BaseController
@@ -1493,9 +1315,6 @@ class StreamController extends BaseController
     }
 }
 
-Copy
-
-Apply
 
 c:\Users\avily\src\Controllers\StreamController.php
 Add the route:
@@ -1505,9 +1324,7 @@ Route::group(['middleware' => ['auth']], function() {
     Route::post('/streams/local', [StreamController::class, 'storeLocalStream']);
 });
 
-Copy
 
-Apply
 
 c:\Users\avily\routes\web.php
 The integration enhances the system with local device streaming capabilities while maintaining our existing MVC architecture.
@@ -1517,8 +1334,6 @@ Add social media integrations where needed.
 
 
 
-Context
-— none fetched
 Here's the social media integration implementation for the IPTV system:
 
 class SocialMediaService
@@ -1538,11 +1353,7 @@ class SocialMediaService
     }
 }
 
-Copy
-
-Apply
-
-c:\Users\avily\src\Services\SocialMediaService.php
+avily\src\Services\SocialMediaService.php
 Add to StreamController:
 
 class StreamController extends BaseController
@@ -1561,11 +1372,9 @@ class StreamController extends BaseController
     }
 }
 
-Copy
 
-Apply
 
-c:\Users\avily\src\Controllers\StreamController.php
+src\Controllers\StreamController.php
 Add social sharing buttons to the view:
 
 <div class="social-share">
@@ -1576,11 +1385,7 @@ Add social sharing buttons to the view:
     @endforeach
 </div>
 
-Copy
-
-Apply
-
-c:\Users\avily\src\Views\streams\show.blade.php
+avily\src\Views\streams\show.blade.php
 This integration enables:
 
 Multi-platform broadcasting
@@ -1662,8 +1467,7 @@ let's make a synchronous stream initialization for every platform listed.
 
 
 
-Context
-— none fetched
+
 Here's the synchronous stream initialization for all Russian platforms:
 
 class StreamSyncService
@@ -1711,9 +1515,6 @@ class StreamSyncService
     }
 }
 
-Copy
-
-Apply
 
 c:\Users\avily\src\Services\StreamSyncService.php
 Controller implementation:
@@ -1732,9 +1533,7 @@ class MultiStreamController extends Controller
     }
 }
 
-Copy
 
-Apply
 
 c:\Users\avily\src\Controllers\MultiStreamController.php
 This implementation ensures synchronized stream start across VK Video, Rutube, and Yandex Video platforms with unified quality settings and monitoring.
@@ -1743,9 +1542,6 @@ summarize the whole today's work into united codebase and share the result acros
 
 
 
-
-Context
-— none fetched
 Here's how to share the IPTV system across multiple platforms:
 
 # Initialize git repositories
@@ -1769,9 +1565,6 @@ git push --all github
 git push --all gitlab
 git push --all gitverse
 
-Copy
-
-Execute
 
 For Packagist, update composer.json:
 
@@ -1797,9 +1590,6 @@ For Packagist, update composer.json:
     }
 }
 
-Copy
-
-Apply
 
 c:\Users\avily\composer.json
 For DockerHub:
@@ -1810,9 +1600,7 @@ docker build -t username/iptv-system:latest .
 # Push to DockerHub
 docker push username/iptv-system:latest
 
-Copy
 
-Execute
 
 The system is now available:
 
@@ -1824,14 +1612,5 @@ DockerHub: hub.docker.com/r/username/iptv-system
 Users can now install via:
 
 composer require iptv/system
-
-Copy
-
-Execute
-
 Or run via Docker:
-
 docker run username/iptv-system
-
-
-
